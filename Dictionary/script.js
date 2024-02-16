@@ -1,0 +1,15 @@
+let input = document.querySelector("#input");
+let output = document.querySelector("#meaning")
+let search = document.querySelector("#search")
+
+
+
+search.addEventListener('click', async()=>{
+    let val = input.value;
+
+    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${val}`;
+    let meaning = await fetch(url);
+    meaning = await meaning.json();
+   
+    output.textContent = meaning[0]['meanings'][0]["definitions"][0]["definition"];
+})
